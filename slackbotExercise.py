@@ -58,12 +58,12 @@ def extractSlackUsers(token):
 def selectExerciseAndStartTime():
 
     # Exercise (2 Forms of Strings)
-    exercises = [" PUSHUPS ", " PUSHUPS ", " SECOND PLANK ", " SITUPS ", " SECOND WALL SIT "]
-    exerciseAnnouncements = ["PUSHUPS", "PUSHUPS", "PLANK", "SITUPS", "WALLSIT"]
+    exercises = [" PUSHUPS ", " SECOND PLANK ", " SITUPS ", " SECOND WALL SIT ", " SQUATS ", " LUNGES ", " TUCK JUMPS ", " DIPS ", " JUMPING JACKS "]
+    exerciseAnnouncements = ["PUSHUPS", "PLANK", "SITUPS", "WALLSIT", "SQUATS", "LUNGES", "TUCK JUMPS", "DIPS", "JUMPING JACKS"]
 
     # Random Number generator for Reps/Seconds and Exercise
     nextTimeInterval = random.randrange(300, 1800)
-    exerciseIndex = random.randrange(0, 5)
+    exerciseIndex = random.randrange(0, 9)
 
     # Announcement String of next lottery time
     lotteryTimeString = "NEXT LOTTERY FOR " + str(exerciseAnnouncements[exerciseIndex]) + " IS IN " + str(nextTimeInterval/60) + " MINUTES"
