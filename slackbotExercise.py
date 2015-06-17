@@ -85,6 +85,7 @@ def selectPerson(exercise):
 
     # Pull all users from API
     slackUsers = extractSlackUsers(USERTOKENSTRING)
+    slackUsers.append('@group')
 
     # Select index of team member from array of team members
     selection = random.randrange(0, len(slackUsers))
