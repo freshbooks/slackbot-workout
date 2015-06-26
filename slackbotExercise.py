@@ -95,7 +95,7 @@ def selectPerson(exercise):
             selection2 = random.randrange(0, len(slackUsers))
 
         # Select lottery winner
-        lotteryWinnerString = str(exerciseReps) + str(exercise) + "RIGHT NOW " + slackUsers[selection] + "AND " + slackUsers[selection2]
+        lotteryWinnerString = str(exerciseReps) + str(exercise) + "RIGHT NOW " + slackUsers[selection] + " AND " + slackUsers[selection2]
         print lotteryWinnerString
         requests.post("https://"+ TEAMNAMESTRING +".slack.com/services/hooks/slackbot?token="+URLTOKENSTRING+"&channel=%23"+CHANNEL, data=lotteryWinnerString)
         
