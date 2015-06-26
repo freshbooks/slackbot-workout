@@ -103,6 +103,7 @@ def selectPerson(exercise):
         with open("results.csv", 'a') as f:
             writer = csv.writer(f)
             writer.writerow([slackUsers[selection], exerciseReps, exercise])
+            writer.writerow([slackUsers[selection2], exerciseReps, exercise])
     else:
         lotteryWinnerString = str(exerciseReps) + str(exercise) + "RIGHT NOW " + slackUsers[selection]
         print lotteryWinnerString
@@ -112,7 +113,6 @@ def selectPerson(exercise):
         with open("results.csv", 'a') as f:
             writer = csv.writer(f)
             writer.writerow([slackUsers[selection], exerciseReps, exercise])
-            writer.writerow([slackUsers[selection2], exerciseReps, exercise])
 
 for i in range(10000):
     exercise = selectExerciseAndStartTime()
