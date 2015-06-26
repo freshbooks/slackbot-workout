@@ -90,9 +90,9 @@ def selectPerson(exercise):
     # Select index of team member from array of team members
     selection = random.randrange(0, len(slackUsers))
     if slackUsers[selection] != '@group':
-        selection2 = selection
-        while selection2 == selection and slackUsers[selection2] == '@group':
-            selection2 = random.randrange(0, len(slackUsers))
+        slackUsers.remove('@group')
+        slackUsers.remove(slackUsers[selection])
+        selection2 = random.randrange(0, len(slackUsers))
             
         # Select lottery winner
         lotteryWinnerString = str(exerciseReps) + str(exercise) + "RIGHT NOW " + slackUsers[selection] + " AND " + slackUsers[selection2]
