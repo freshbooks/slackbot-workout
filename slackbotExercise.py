@@ -92,30 +92,17 @@ def selectPerson(exercise):
     if slackUsers[selection] != '@group':
         slackUsers.remove('@group')
         slackUsers.remove(slackUsers[selection])
-        selection2 = random.randrange(0, len(slackUsers))
-            
-        # Select lottery winner
-        lotteryWinnerString = str(exerciseReps) + str(exercise) + "RIGHT NOW " + slackUsers[selection] + " AND " + slackUsers[selection2]
-        print lotteryWinnerString
+
+        lotteryWinnerString = str(exerciseReps) + str(exercise) + "RIGHT NOW " + slackUsers[selection]
+        if len(slackUsers) > 18:
+            selection2 = random.randrange(0, len(slackUsers))
+            lotteryWinnerString += " AND " + slackUsers[selection2]
+
         requests.post("https://"+ TEAMNAMESTRING +".slack.com/services/hooks/slackbot?token="+URLTOKENSTRING+"&channel=%23"+CHANNEL, data=lotteryWinnerString)
-        
-        # Record exercise entry in csv
-        with open("results.csv", 'a') as f:
-            writer = csv.writer(f)
-            writer.writerow([slackUsers[selection], exerciseReps, exercise])
-            writer.writerow([slackUsers[selection2], exerciseReps, exercise])
     else:
         lotteryWinnerString = str(exerciseReps) + str(exercise) + "RIGHT NOW " + slackUsers[selection]
-        print lotteryWinnerString
         requests.post("https://"+ TEAMNAMESTRING +".slack.com/services/hooks/slackbot?token="+URLTOKENSTRING+"&channel=%23"+CHANNEL, data=lotteryWinnerString)
-
-        # Record exercise entry in csv
-        with open("results.csv", 'a') as f:
-            writer = csv.writer(f)
-            writer.writerow([slackUsers[selection], exerciseReps, exercise])
 
 for i in range(10000):
     exercise = selectExerciseAndStartTime()
     selectPerson(exercise)
-
-
